@@ -39,6 +39,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   flutter_launcher_icons: ^0.13.1
   convex_bottom_bar: ^3.2.0
+  brasil_fields: ^1.14.0
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,9 @@
 import 'package:app_via_cep/model/cep_back4app_model.dart';
 import 'package:app_via_cep/repository/cep_back4app_repository.dart';
 import 'package:app_via_cep/repository/viacep_repository.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -44,9 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 "Consulta de CEP",
                 style: TextStyle(fontSize: 22),
               ),
-              TextField(
+              TextFormField(
                   controller: cepController,
                   keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    CepInputFormatter(),
+                  ],
                   onChanged: (String value) async {
                     var cep = value.replaceAll(RegExp(r'[^0-9]'), '');
                     if (cep.length == 8) {
